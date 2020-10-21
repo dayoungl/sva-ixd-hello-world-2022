@@ -31,7 +31,7 @@ def main():
 
 #Game Over
 def gameOver():
-	print("------------------------------")
+	print("------------------------------------------------------------------------")
 	print("Game Over")
 	print("Play Again?")
 	print("options: [Yes, No]")
@@ -50,7 +50,7 @@ def gameOver():
 #Introduction
 def introStory():
 	print("POST COVID Era --- Air travel becomes normalized.")
-	print("------------------------------")
+	print("------------------------------------------------------------------------")
 	print("Today is the day! You are going on a long-awaited winter vacation to " + destination + ". " + "You booked a/an " + airline + " flight " + "that departs at " + departure + " PM tonight.")
 
 
@@ -73,11 +73,56 @@ def setup():
 		getReady()
 
 
+def takeMetro():
+	price = random.randint(1,200)
+	fair = str(price)
+	etaMin = random.randint(1,40)
+	eta = str(min)
+
+	print("Walks to the closest metro station.")
+	print("------------------------------------------------------------------------")
+	print("The train to JFK is delayed. You won't make it ot the airport in time.")
+	print("What are your options?")
+
+	print("options: [Get off and run, call Lyft]")
+
+	pcmd = raw_input(">")
+
+	if(pcmd == "Get off and run"):
+		print("You run for 10 minutes and realize that you can't do it.")
+		gameOver()
+
+	elif(pcmd == "call Lyft"):
+		print("The fair is " + fair + ".")
+
+		if (price > 50):
+			print("Too expensive. I'm doomed...")
+
+			pcmd = raw_input(">")
+
+			gameOver()
+
+		elif(price < 50):
+			print("Great deal. Let's call it!")
+			
+			pcmd = raw_input(">")
+
+			"What is the " + eta + " ?"
+
+			if(eta > 20):
+				pcmd = raw_input(">")
+
+				gameOver()
+
+			else:
+				print("Waiting for the Lyft...")
+
 
 def getMoving():
 	price = random.randint(1,200)
 	fair = str(price)
-	eta = random.randint(1,40)
+	etaMin = random.randint(1,40)
+	eta = str(min)
 
 	print("You walk out the door and think about how you want to get to the airport.")
 	print("Should I take the metro or call Lyft?")
@@ -86,17 +131,23 @@ def getMoving():
 	pcmd = raw_input(">")
 
 	if(pcmd == "metro"):
-		print("Walks to the closest metro station.")
+		print("Walk to the closest metro station.")
+		takeMetro()
 
 	elif(pcmd == "Lyft"):
 		print("Let's call Lyft and check the fair.")
 		print("The fair is " + fair + ".")
 
 		if (price > 50):
-			"Too expensive. Maybe I should ride the metro."
+			print("Too expensive. Maybe I should ride the metro.")
+
+			pcmd = raw_input(">")
+
+			takeMetro()
 
 		elif(price < 50):
-			"Great deal. Let's call it!"
+			print("Great deal. Let's call it!")
+
 			pcmd = raw_input(">")
 
 			"What is the " + eta + " ?"
@@ -138,18 +189,4 @@ def getReady():
 
 
 main()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
